@@ -11,11 +11,7 @@ fn bench_tpm(c: &mut Criterion) {
     c.bench_function("rsomics-tpm golden", |b| {
         b.iter(|| {
             let out = Command::new(black_box(bin))
-                .args([
-                    counts.to_str().unwrap(),
-                    "-l",
-                    lengths.to_str().unwrap(),
-                ])
+                .args([counts.to_str().unwrap(), "-l", lengths.to_str().unwrap()])
                 .output()
                 .unwrap();
             assert!(out.status.success());
